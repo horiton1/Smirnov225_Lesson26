@@ -1,0 +1,18 @@
+package task2;
+
+import com.sun.net.httpserver.HttpServer;
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+
+public class Practicum {
+    private static final int PORT = 8080;
+
+    static void main() throws IOException {
+        HttpServer httpServer = HttpServer.create(new InetSocketAddress(PORT), 0);
+        httpServer.createContext("/hello", new HelloHandler());
+        httpServer.start();
+        System.out.println("HTTP-сервер запущен на " + PORT + " порту!");
+        httpServer.stop(2);
+    }
+}
